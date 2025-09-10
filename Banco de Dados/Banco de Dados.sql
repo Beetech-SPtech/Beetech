@@ -19,26 +19,24 @@ nome VARCHAR(50) NOT NULL,
 sobrenome VARCHAR(50) NOT NULL, 
 email VARCHAR(70) NOT NULL UNIQUE,
 dtNascimento DATE NOT NULL,
-telCelular VARCHAR (13) NOT NULL UNIQUE,
+telCelular VARCHAR (13) UNIQUE,
+telFixo VARCHAR(10) UNIQUE,
 senha VARCHAR(60) NOT NULL,
 dtCadastro DATETIME DEFAULT CURRENT_TIMESTAMP,
-empresa VARCHAR(100),
 nivelUsuario CHAR(3), 
-CONSTRAINT chkCargo CHECK( nivelUsuario IN('ADM', 'SUB')),
-statusUsuario TINYINT,
-CONSTRAINT chkStatus CHECK( statusUsuario IN(0, 1))
+CONSTRAINT chkCargo CHECK( nivelUsuario IN('ADM', 'SUB'))
 );
 
 -- Inserção de registros na tabela
-INSERT INTO usuarios(nome, sobrenome, email, dtNascimento, telCelular, senha, empresa, nivelUsuario, statusUsuario) VALUES
-	('Josué', 'Alvarez Avendano', 'josue.avendano@rancho.maia', '2000-02-02', '11960181191', 'J0su3!12th3', 'Rancho do Maia', 'SUB', 1),
-    ('Rafael', 'Prazeres Calderon', 'rafael.calderon@nagro.valley', '2007-02-23', '11948353845', 'R4f4!12ol', 'Nagro Valley', 'SUB', 0),
-    ('Lesly', 'Oliveira', 'lesly.oliveira@bee.tec', '2004-06-21', '11961692152', 'K0l3s_3r', 'BeeTec', 'SUB', 0),
-    ('Cláudio', 'Frizzarini', 'claudio.frizzarini@pedro.colmeia', '1968-05-20', '11932841827', 'fr1zz0l_', 'Fazenda Pedro da Colmeia', 'SUB', 1),
-    ('Victor', 'Oliveira', 'victor.oliveira@rancho.maia', '2004-11-20', '11984739532', 'V!ctor_23', 'Rancho do Maia', 'ADM', 1),
-    ('Thais', 'Miranda', 'thais.miranda@nagro.valley', '1999-02-28', '62998570998', 'b1n4r1_t4bl3', 'Nagro Valley', 'ADM', 1),
-    ('Guilherme', 'Lima', 'guilherme.lima@bee.tech', '1978-12-04', '62903843945', '#gu1_Lim4', 'BeeTec', 'ADM', 1),
-    ('Pedro', 'Cardoso', 'pedro.cardoso@pedro.colmeia', '1971-04-07', '86978420913', 'pedroFarm_$', 'Fazenda Pedro da Colmeia', 'ADM', 1);
+INSERT INTO usuarios(nome, sobrenome, email, dtNascimento, telCelular, senha, nivelUsuario) VALUES
+	('Josué', 'Alvarez Avendano', 'josue.avendano@rancho.maia', '2000-02-02', '11960181191', 'J0su3!12th3', 'Rancho do Maia', 'SUB'),
+    ('Rafael', 'Prazeres Calderon', 'rafael.calderon@nagro.valley', '2007-02-23', '11948353845', 'R4f4!12ol', 'Nagro Valley', 'SUB'),
+    ('Lesly', 'Oliveira', 'lesly.oliveira@bee.tec', '2004-06-21', '11961692152', 'K0l3s_3r', 'BeeTec', 'SUB'),
+    ('Cláudio', 'Frizzarini', 'claudio.frizzarini@pedro.colmeia', '1968-05-20', '11932841827', 'fr1zz0l_', 'Fazenda Pedro da Colmeia', 'SUB'),
+    ('Victor', 'Oliveira', 'victor.oliveira@rancho.maia', '2004-11-20', '11984739532', 'V!ctor_23', 'Rancho do Maia', 'ADM'),
+    ('Thais', 'Miranda', 'thais.miranda@nagro.valley', '1999-02-28', '62998570998', 'b1n4r1_t4bl3', 'Nagro Valley', 'ADM'),
+    ('Guilherme', 'Lima', 'guilherme.lima@bee.tech', '1978-12-04', '62903843945', '#gu1_Lim4', 'BeeTec', 'ADM'),
+    ('Pedro', 'Cardoso', 'pedro.cardoso@pedro.colmeia', '1971-04-07', '86978420913', 'pedroFarm_$', 'Fazenda Pedro da Colmeia', 'ADM');
 
 -- Seleção de todos os registros contidos na tabela
 SELECT * FROM usuarios;
@@ -73,24 +71,17 @@ CREATE TABLE empresa(
 idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
 responsavel VARCHAR(40) NOT NULL,
 nomeEmpresa VARCHAR(150) NOT NULL,
-logradouro VARCHAR (90) NOT NULL,
-numLogradouro VARCHAR(10) NOT NULL,
-cidade VARCHAR(80) NOT NULL,
-UF CHAR(2) NOT NULL,
-cep VARCHAR (15)  NOT NULL,
-cnpj VARCHAR (14) NOT NULL UNIQUE,
-telFixo VARCHAR(10) NOT NULL UNIQUE
+cnpj CHAR(18),
+telFixo VARCHAR(10) UNIQUE,
+telCelular VARCHAR(13) UNIQUE
 );
 
--- Alteração do tipo da coluna CNPJ, aumentada para char(18)
-ALTER TABLE empresa MODIFY COLUMN cnpj CHAR(18);
-
 -- Inserção de registros na tabela
-INSERT INTO empresa (responsavel, nomeEmpresa, logradouro, numLogradouro, cidade, UF, cep, cnpj, telFixo) VALUES
-('Victor', 'Rancho do Maia', 'Rua da Imprensa', '48', 'Campo Grande', 'SP', '06436440', '22.245.445/0001-45', '1123750853'),
-('Thais', 'Nagro Valley', 'Rua Alexandre Arckipenco', '35', 'Aparecida de Goiânia', 'GO', '03546550', '23.542.882/0001-52', '6274859048'),
-('Guilherme', 'BeeTec', 'Rua Andorinha', '425', 'Pirinópolis', 'GO', '04255624', '81.523.238/0001-01', '6274890985'),
-('Pedro', 'Fazenda Pedro da Colmeia', 'Rua Arlindo Nogueira', '140', 'Teresina', 'PI', '64000290', '64.705.559/0001-08', '8674830941');
+INSERT INTO empresa (responsavel, nomeEmpresa, cnpj, telFixo) VALUES
+('Victor Rafael', 'Rancho do Maia', '20.000.258/0001-03', '1123750853'),
+('Thais Lima', 'Nagro Valley', '16.465.514/0001-52' ,'6274859048'),
+('Guilherme Jesus', 'BeeTec', '47.287.021/0001-01' ,'6274890985'),
+('Pedro Henrique', 'Fazenda Pedro da Colmeia', '76.168.937/0001-32' ,'8674830941');
 
 /* ------------------------------------------------------------------------------------------------------- */
 
@@ -158,8 +149,9 @@ INSERT INTO registroSensor (sensor, qtdTemperatura) VALUES
 ('Sensor_004', 34.25);
 
 -- Exibição de todos os registros do sensor 'Sensor_001'
-SELECT * FROM registroSensor
-WHERE sensor = 'Sensor_001';
+SELECT * FROM registroSensor WHERE sensor = 'Sensor_001';
+
+SELECT CASE WHEN qtdTemperatura > 36 THEN CONCAT('Temperatura Elevada: ', qtdTemperatura) END FROM registroSensor;
 
 /* ------------------------------------------------------------------------------------------------------- */
 
@@ -175,7 +167,7 @@ INSERT INTO sensores (nomeSensor, cliente) VALUES
 ('Sensor_001', 'Nagro Valley'),
 ('Sensor_002', 'Rancho do Maia'),
 ('Sensor_003', 'BeeTec'),
-('Sensor_004', 'Fazendo Pedro da Colmeia');
+('Sensor_004', 'Fazenda Pedro da Colmeia');
 
 -- Seleção de todos os dados dentro da tabela
 SELECT * FROM sensores;
@@ -191,13 +183,13 @@ qtdColmeia INT NOT NULL,
 temperaturaMedia DECIMAL(4, 2) NOT NULL,
 valorMel DECIMAL(7, 2),
 dtCriacao DATETIME DEFAULT CURRENT_TIMESTAMP,
-empresa VARCHAR(100)
+cnpj VARCHAR(18)
 )AUTO_INCREMENT = 1000;
 
 -- Inserção de registros na tabela
 INSERT INTO producaoTotal (melKg, qtdColmeia, temperaturaMedia, valorMel) VALUES
 (12502.87, 87, 34.87, 3600.00),
-(09875.09, 71, 34.99, 2850.00),
+(9875.09, 71, 34.99, 2850.00),
 (15029.11, 94, 36.43, 6700.85),
 (14500.94, 58, 35.76, 1400.90);
 
@@ -214,3 +206,18 @@ FROM producaoTotal;
 -- Exibição da quantidade de colmeias, mel produzido em KG e valor do mel, com apelidos semânticos
 SELECT qtdColmeia AS 'Quantidade de Colmeias', melKg AS 'Mel Por Quilo', valorMel AS 'Preço do Mel' FROM  producaoTotal;
 
+/* ------------------------------------------------------------------------------------------------------- */
+
+CREATE TABLE enderecos(
+	idEnderecos INT PRIMARY KEY AUTO_INCREMENT,
+	cnpj CHAR(18),
+	logradouro VARCHAR (90) NOT NULL,
+	numLogradouro VARCHAR(10) NOT NULL,
+	cidade VARCHAR(80) NOT NULL,
+	UF CHAR(2) NOT NULL,
+	cep CHAR (9) NOT NULL,
+    bairro VARCHAR(40),
+    complemento VARCHAR(50),
+    statusEndereco VARCHAR(10) DEFAULT 'Ativo',
+    CONSTRAINT chkEndereco CHECK( statusEndereco IN('Ativo', 'Inativo'))
+);
