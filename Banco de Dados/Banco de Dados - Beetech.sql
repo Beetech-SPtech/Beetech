@@ -172,7 +172,7 @@ cliente VARCHAR(50)
 
 -- Inserção de dados na tabela
 INSERT INTO sensores (nomeSensor, cliente) VALUES
-('Sensor_001', 'Nagro Valley'),
+('Sensor_001', 'Nagr'),
 ('Sensor_002', 'Rancho do Maia'),
 ('Sensor_003', 'BeeTec'),
 ('Sensor_004', 'Fazendo Pedro da Colmeia');
