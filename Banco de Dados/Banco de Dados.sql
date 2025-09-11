@@ -233,7 +233,7 @@ CREATE TABLE enderecos(
 INSERT INTO enderecos (cnpj, logradouro, numLogradouro, cidade, UF, cep, bairro, complemento, statusEndereco) VALUES
 ('12.345.678/0001-90', 'Avenida Paulista', '1000', 'São Paulo', 'SP', '01310-100', 'Bela Vista', 'Conjunto 101', 'Ativo'),
 ('98.765.432/0001-55', 'Rua XV de Novembro', '250', 'Curitiba', 'PR', '80020-310', 'Centro', 'Sala 5', 'Ativo'),
-('55.444.333/0001-22', 'Avenida Atlântica', '5000', 'Rio de Janeiro', 'RJ', '22021-001', 'Copacabana', NULL, 'Inativo'),
+('55.444.333/0001-22', 'Avenida Atlântica', '5000', 'Rio de Janeiro', 'RJ', '22021-001', 'Copacabana', 'Apt 130', 'Inativo'),
 ('77.888.999/0001-11', 'Rua das Flores', '123', 'Florianópolis', 'SC', '88010-200', 'Centro', 'Casa 2', 'Ativo');
 
 SELECT idEnderecos, cidade, CASE WHEN statusEndereco = 'Ativo' THEN 'Endereço em uso'
