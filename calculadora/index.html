@@ -4,206 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora BeeTech</title>
 </head>
-
-<style>
-    .center {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-items: center;
-    }
-
-    .chart {
-        display: flex;
-        gap: 10px;
-        align-items: end;
-        margin: 20px;
-        justify-items: baseline;
-    }
-     .chartRow{
-        display: flex;
-        gap: 10px;
-        flex-direction: column;
-        margin: 20px;
-        justify-items: baseline;  
-        font-size: 22px;
-    }
-
-    .charts {
-        display: flex;
-        gap: 10px;
-        align-items: end;
-    }
-
-     .chartsRow {
-        display: flex;
-        gap: 10px;
-    }
-
-    .bloco {
-        height: 28.2px;
-        width: 28.2px;
-        background-color: blue;
-    }
-    .blocoRow {
-        height: 33.2px;
-        width: 56.2px;
-        background-color: blue;
-    }
-
-    .data {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-items: center;
-    }
-
-     .dataRow {
-        display: flex;
-        flex-direction: row;
-    }
-    .self-end{
-        align-self:flex-end;
-        margin-left: auto; 
-    }
-
-
-    .column {
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 55px;
-        justify-items: baseline;
-        align-items: end;
-    }
-
-     .columnRow {
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 55px;
-        justify-items: baseline;
-    }
-
-    .divCard {
-        width: 1100px;
-        height: auto;
-        background-color: white;
-        border-radius: 25px;
-        border: solid 4px rgb(243, 186, 31);
-        margin: 20px;
-        padding: 40px;
-        font-family: monospace;
-        font-weight: bold;
-        font-size: 26px;
-        display: flex;
-        flex-direction: column;
-        text-transform: uppercase;
-    }
-
-    .divImagem {
-        border-radius: 50%;
-        margin-bottom: 30px;
-        display: flex;
-        width: 100%;
-        justify-content: space-around;
-        align-items: center;
-    }
-
-    .imagem {
-        width: 200px;
-        height: 200px;
-    }
-
-    .botaoCalcular {
-        width: 170px;
-        height: 50px;
-        font-size: 26px;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        background-color: rgb(243, 186, 31);
-        border: none;
-        border-radius: 10px;
-
-
-    }
-
-    .botaoCalcular:hover {
-        background-color: rgb(218, 168, 31);
-    }
-
-    .input {
-        width: 530px;
-        height: 30px;
-        border-radius: 10px;
-        font-size: 28px;
-        margin-bottom: 5px;
-        text-transform: uppercase;
-
-    }
-
-    .inputBTN {
-        width: 45px;
-        height: 45px;
-        border-radius: 2px;
-        font-size: 28px;
-        margin-bottom: 5px;
-        text-transform: uppercase;
-        text-align: center;
-        background-color: #ffff;
-
-    }
-
-    .divMensagem {
-        width: 100%;
-        height: 100%;
-        background-color: rgb(235, 198, 77);
-        border-radius: 10px;
-        padding-left: 12px;
-        padding-top: 5px;
-
-
-    }
-
-    .vermelho {
-        color: red;
-    }
-
-    .backgroundDado {
-        background-color: aliceblue;
-        border-radius: 5px;
-    }
-
-    .line {
-        width: 100%;
-        height: 2px;
-        background-color: black;
-    }
-
-    .halfline {
-        width: 50%;
-        height: 2px;
-        background-color: black;
-        margin-left: 5px;
-    }
-
-    .container_line {
-        display: flex;
-        width: 100%;
-        margin: 10px;
-        justify-items: center;
-        align-items: center;
-        gap: 10px;
-    }
-</style>
-
 <body class="center">
     <div id="main" class="divCard">
-        <div>
-            <label for="name">Insira seu nome:</label>
-            <input type="text" id="input_name" class="input">
-            <button id="init" onclick="handleInit()" class="botaoCalcular">Entrar</button>
-        </div>
+        <div class="divImagem">
+                <img class="imagem" src="logo-beetech.png" alt=""><br>
+                    <h1>Simulador Financeiro</h1>
+                </div>
+                <div class="divPerguntas">
+                    <label for="inColmeias">
+                        Insira a quantidade de colmeias: <br>
+                        <input type="text" id="inColmeias" class="input"><br>
+                    </label>
+                    <label for="inProducao">
+                        Produção média por colmeia no mês (em kg): <br>
+                        <input type="number" id="inProducao" class="input"><br>
+                    </label>
+                    <label for="inPreco">
+                        Preço do kg do mel (em R$): <br>
+                        <input type="number" id="inPreco" class="input"><br>
+                    </label>
+                </div>
+                <div class="divBotao">
+                    <button onclick="showRelatorMouth()" class="botaoCalcular">MENSAL</button>
+                    <button onclick="showRelatorAnuel()" class="botaoCalcular">ANUAL</button>
+                </div>
+                <div class="divMensagem" id="divMensagem">Os relatórios irão aparecer aqui::</div> 
     </div>
     <script>
         var name;
@@ -229,16 +57,28 @@
             var diferencaFaturamentoMes = faturamentoSemPerdaMes - faturamentoComPerdaMes;
 
 
-            var percentualPerda = (perdaProducaoMes * 100) / producaoSemPerdaMes;
+            var percentualPerda = (perdaProducaoMes * 100) / producaoComPerdaMes;
 
 
             divMensagem.innerHTML = `
       <div class="container_line">
         DADOS MENSAIS  <div class="halfline"></div><br>
     </div> 
-        <span>Produção no mês antes: <span class="backgroundDado">${producaoComPerdaMes}kg</span></span><br>
-        <span>Produção no mês depois: <span class="backgroundDado">${producaoSemPerdaMes}kg</span></span><br>
-        <h3>Gráfico</h3>
+    <br>
+    <br>
+        <span>Nossos serviços irão proporcionar <span style="color:green">faturamento </span> de  até <span style="color:green">${percentualPerda}</span>% a mais na sua receita</span><br><br>
+        <span>Produção antes(mês): <span class="backgroundDado">${producaoComPerdaMes}kg</span></span><br>
+        <span>Produção depois(mês): <span class="backgroundDado">${producaoSemPerdaMes}kg</span></span><br>
+                        <br>
+        <span >KG perdidos por mês:<span class="vermelho"> ${perdaProducaoMes}kg </span></span><br>
+        <br>
+
+        <span>Faturamento antes(mês): <span class="backgroundDado">${faturamentoComPerdaMes}R$</span></span><br>
+        <span>Faturamento depois(mês): <span class="backgroundDado">${faturamentoSemPerdaMes}R$</span></span><br>
+        <span>Diferença de faturamento mês: <span style="color:green"> ${diferencaFaturamentoMes} </span>R$</span><br><br>
+       <div class="line" ></div><br>
+        <h3>Gráfico </h3>
+        *<span style="font-size:16px"> Seu faturamento antes e depois de utilizar nossos serviços</span>
           <div class="chart">
                         <div class="column">
                         <span>100%-</span>
@@ -253,47 +93,19 @@
                         <span>5%-</span>
                         </div>
                         <div id="dados" class="charts">
-                            <div id="dado1" class="data"></div>  
-                            <div id="dado2" class="data" ></div>  
+                            <div id="dado1" class="data">
+                                <div class="blocoRed"></div>
+                                <br>
+                                <span>Antes |</span>
+                            </div>  
+                            <div id="dado2" class="data" >
+                                <div class="blocoBlue"></div>
+                                <br>
+                                 <span>Depois</span>
+                            </div>  
                         </div>
-                        </div>
-                        <br>
-        <span>Kg perdidos todo mês: ${perdaProducaoMes}kg</span><br>
-        <br>
-
-        <span>Faturamento no mês antes: <span class="backgroundDado">${faturamentoComPerdaMes}R$</span></span><br>
-        <span>Faturamento no mês depois: <span class="backgroundDado">${faturamentoSemPerdaMes}R$</span></span><br>
-        <span>Diferença de faturamento mês: ${diferencaFaturamentoMes}R$</span><br><br>
-       <div class="line" ></div><br>
-       
-        <span>Isso tudo representa uma <span class="vermelho">perda</span> na sua produção e <br>
-        faturamento de até: <span class="vermelho">${percentualPerda}</span>%</span>
+                    </div>
         `;
-
-            //grafico Mensal
-            var indice_blocoMensal = 0
-            var porcentagemProducaoMensal = (producaoComPerdaMes * 100) / producaoSemPerdaMes
-            var quantidadeBlocosMensal = porcentagemProducaoMensal / 10
-            function addBlocoMensal() {
-                if (quantidadeBlocosMensal > 0) {
-                    dado1.innerHTML += `<div class="bloco"  style="background: red;"> </div> `;
-                    quantidadeBlocosMensal--;
-                    addBlocoMensal();
-                } else {
-                    dado1.innerHTML += `<br> Antes |<br>`;
-                }
-            }
-            addBlocoMensal();
-            loopGraficoGanhadorMensal();
-            function loopGraficoGanhadorMensal() {
-                if (indice_blocoMensal < 10) {
-                    indice_blocoMensal++;
-                    dado2.innerHTML += `<div class="bloco" style="background: green;"> </div> `;
-                    loopGraficoGanhadorMensal();
-                } else {
-                    dado2.innerHTML += `<br> Depois <br> `;
-                }
-            }
 
         }
         function showRelatorAnuel() {
@@ -330,19 +142,28 @@
         <div class="container_line">
         DADOS ANUAIS  <div class="halfline"></div><br>
         </div>
-        <span>Produção no ano antes: <span class="backgroundDado">${producaoComPerdaAno}kg</span></span><br>
-        <span>Produção no ano depois: <span class="backgroundDado">${producaoSemPerdaAno}kg</span></span><br>
+        <br>
+        <span>Caso a taxa de produção mensal se mantenha a mesma, seriam esses os resultados:<br><br>
+        <span>Produção antes(ano): <span class="backgroundDado">${producaoComPerdaAno}kg</span></span><br>
+        <span>Produção depois(ano ): <span class="backgroundDado">${producaoSemPerdaAno}kg</span></span><br>
         <span>Kg perdidos no ano: ${perdaProducaoAno}kg</span><br>
         <br>
         
-        <span>Faturamento no ano antes: <span class="backgroundDado">${faturamentoComPerdaAno}R$</span></span><br>
-        <span>Faturamento no ano depois: <span class="backgroundDado">${faturamentoSemPerdaAno}R$</span></span><br>
-        <span>Diferença de faturamento mês: ${diferencaFaturamentoAno}R$</span><br>
+        <span>Faturamento antes(ano): <span class="backgroundDado">${faturamentoComPerdaAno}R$</span></span><br>
+        <span>Faturamento depois(ano): <span class="backgroundDado">${faturamentoSemPerdaAno}R$</span></span><br>
+        <span>Diferença de faturamento anual: ${diferencaFaturamentoAno}R$</span><br>
         <h3>Gráfico</h3>
+        <span style="font-size:16px;">* Seu faturamento antes e depois de utilizar nossos serviços</span>
           <div class="chartRow">
                         <div class="columnRow">
-                            <div id="dado1Anual" class="dataRow"> </div>  
-                            <div id="dado2Anual" class="dataRow"> </div>  
+                            <div id="dado1Anual" class="dataRow">
+                                <span class="blocoRowRed"></span>
+                                <span>Antes</span>
+                            </div>  
+                            <div id="dado2Anual" class="dataRow">
+                                  <span class="blocoRowGreen"></span>
+                                  <span>Depois</span>
+                            </div>  
                         </div>
                         <div id="dadosAnual" class="charts">
                             <span>5%-</span>
@@ -361,73 +182,6 @@
         <br>
                <div class="line"><br>
         `;
-
-
-
-            //gerando grafico Anual
-            var indice_blocoAnual = 0
-            var porcentagemProducaoAnual = (faturamentoComPerdaAno * 100) / faturamentoSemPerdaAno
-            var quantidadeBlocosAnual = porcentagemProducaoAnual / 10
-            function addBlocoAnual() {
-                if (quantidadeBlocosAnual > 0) {
-                    dado1Anual.innerHTML += `<div class="blocoRow"  style="background: red;"> </div> `;
-                    quantidadeBlocosAnual--;
-                    addBlocoAnual();
-                }else{
-                     dado1Anual.innerHTML += `<span class="self-end">Antes</span>`;
-                }
-            }
-            addBlocoAnual();
-            loopGraficoGanhadorAnual();
-            function loopGraficoGanhadorAnual() {
-                if (indice_blocoAnual < 10) {
-                    indice_blocoAnual++;
-                    dado2Anual.innerHTML += `<div class="blocoRow" style="background: green;"> </div> `;
-                    loopGraficoGanhadorAnual();
-                }else{
-                     dado2Anual.innerHTML += `<span class="self-end">Depois</span> `;
-                }
-            }
-        }
-        function handleShowFatur() {
-            main.innerHTML = `
-                <div class="divImagem">
-                <img class="imagem" src="logo-beetech.png" alt=""><br>
-                    <h1>Simulador Financeiro</h1>
-                </div>
-                <div class="divPerguntas">
-                    <label for="inColmeias">
-                        Insira a quantidade de Colmeias: <br>
-                        <input type="text" id="inColmeias" class="input"><br>
-                    </label>
-                    <label for="inProducao">
-                        Produção média por colmeia no Mês (em kg): <br>
-                        <input type="text" id="inProducao" class="input"><br>
-                    </label>
-                    <label for="inPreco">
-                        Preço do kg do Mel (em R$): <br>
-                        <input type="text" id="inPreco" class="input"><br>
-                    </label>
-                </div>
-                <div class="divBotao">
-                    <button onclick="showRelatorMouth()" class="botaoCalcular">MENSAL</button>
-                    <button onclick="showRelatorAnuel()" class="botaoCalcular">ANUAL</button>
-                </div>
-                <div class="divMensagem" id="divMensagem">Os relátorios irão aparecer aqui:</div>            `
-        }
-        function handleInit() {
-           
-        name = input_name.value;
-        main.innerHTML = `
-        <h1>Bem vindo ${name}</h1>
-        <br>
-        <span>Selecione o serviço desejado:</span>
-        <br>
-        <br>
-        <div>
-        <button onclick="handleShowFatur()" class="botaoCalcular">Faturamento </button>
-        </div>
-        `
         }
     </script>
 </body>
