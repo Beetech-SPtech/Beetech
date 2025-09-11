@@ -64,14 +64,14 @@
                 <br>
                 <span>Nossos serviços podem proporcionar um aumento de até <span style="color:green">${percentualPerda.toFixed(2)}%</span> na sua receita.</span><br><br>
 
-                <span>Produção antes (mês): <span class="backgroundDado">${producaoComPerdaMes} kg</span></span><br>
-                <span>Produção depois (mês): <span class="backgroundDado">${producaoSemPerdaMes} kg</span></span><br><br>
+                <span>Produção antes (mês): <span class="backgroundDado">${producaoComPerdaMes.toFixed(2)} kg</span></span><br>
+                <span>Produção depois (mês): <span class="backgroundDado">${producaoSemPerdaMes.toFixed(2)} kg</span></span><br><br>
 
-                <span>Kg perdidos por mês: <span class="vermelho">${perdaProducaoMes} kg</span></span><br><br>
+                <span>Kg perdidos por mês: <span class="vermelho">${perdaProducaoMes.toFixed(2)} kg</span></span><br><br>
 
-                <span>Faturamento antes (mês): <span class="backgroundDado">R$ ${faturamentoComPerdaMes}</span></span><br>
-                <span>Faturamento depois (mês): <span class="backgroundDado">R$ ${faturamentoSemPerdaMes}</span></span><br>
-                <span>Diferença no faturamento mensal: <span style="color:green">R$ ${diferencaFaturamentoMes}</span></span><br><br>
+                <span>Faturamento antes (mês): <span class="backgroundDado">R$ ${faturamentoComPerdaMes.toFixed(2)}</span></span><br>
+                <span>Faturamento depois (mês): <span class="backgroundDado">R$ ${faturamentoSemPerdaMes.toFixed(2)}</span></span><br>
+                <span>Diferença no faturamento mensal: <span style="color:green">R$ ${diferencaFaturamentoMes.toFixed(2)}</span></span><br><br>
 
                 <div class="line"></div><br>
                 <h3>Gráfico</h3>
@@ -128,26 +128,26 @@
                 <br>
                 <span>Considerando a mesma produção mensal, os resultados no ano seriam:</span><br><br>
 
-                <span>Produção antes (ano): <span class="backgroundDado">${producaoComPerdaAno} kg</span></span><br>
-                <span>Produção depois (ano): <span class="backgroundDado">${producaoSemPerdaAno} kg</span></span><br>
-                <span>Kg perdidos no ano: <span class="vermelho">${perdaProducaoAno} kg</span></span><br><br>
+                <span>Produção antes (ano): <span class="backgroundDado">${producaoComPerdaAno.toFixed(2)} kg</span></span><br>
+                <span>Produção depois (ano): <span class="backgroundDado">${producaoSemPerdaAno.toFixed(2)} kg</span></span><br>
+                <span>Kg perdidos no ano: <span class="vermelho">${perdaProducaoAno.toFixed(2)} kg</span></span><br><br>
 
-                <span>Faturamento antes (ano): <span class="backgroundDado">R$ ${faturamentoComPerdaAno}</span></span><br>
-                <span>Faturamento depois (ano): <span class="backgroundDado">R$ ${faturamentoSemPerdaAno}</span></span><br>
-                <span>Diferença no faturamento anual: <span style="color:green">R$ ${diferencaFaturamentoAno}</span></span><br><br>
+                <span>Faturamento antes (ano): <span class="backgroundDado">R$ ${faturamentoComPerdaAno.toFixed(2)}</span></span><br>
+                <span>Faturamento depois (ano): <span class="backgroundDado">R$ ${faturamentoSemPerdaAno.toFixed(2)}</span></span><br>
+                <span>Diferença no faturamento anual: <span style="color:green">R$ ${diferencaFaturamentoAno.toFixed(2)}</span></span><br><br>
 
                 <h3>Gráfico</h3>
-                <span style="font-size:16px">Comparação do faturamento anual antes e depois de utilizar nossos serviços</span>
+                <span style="font-size:50px">Comparação do faturamento anual antes e depois de utilizar nossos serviços</span>
 
                 <div class="linhaTabela">
                     <div class="colunaLinha">
                         <div id="dado1Anual" class="dataLinha">
                             <span class="blocoLinhaVermelho"></span>
-                            <span>Antes</span>
+                            <span style="margin-left: 10px;">Antes</span>
                         </div>  
                         <div id="dado2Anual" class="dataLinha">
                             <span class="blocoLinhaVerde"></span>
-                            <span>Depois</span>
+                            <span style="margin-left: 10px;">Depois</span>
                         </div>  
                     </div>
                     <div id="dadosAnual" class="tabelas">
