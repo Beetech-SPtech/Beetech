@@ -1,90 +1,3 @@
-.center {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-items: center;
-    }
-
-    .chart {
-        display: flex;
-        gap: 10px;
-        align-items: end;
-        margin: 20px;
-        justify-items: baseline;
-    }
-     .linhaTabela{
-        display: flex;
-        gap: 10px;
-        flex-direction: column;
-        margin: 20px;
-        justify-items: baseline;  
-        font-size: 22px;
-    }
-
-    .tabelas {
-        display: flex;
-        gap: 10px;
-        align-items: end;
-    }
-
-     .tabelasRow {
-        display: flex;
-        gap: 10px;
-    }
-
-    .blocoBlue {
-        height: 282px;
-        width: 28px;
-        background-color: blue;
-    }
-    .blocoRed{
-        height: 225px;
-        width: 28px;
-        background-color: red;
-    }
-    .blocoLinhaVerde {
-        height: 33.2px;
-        width: 562px;
-        background-color: green;
-    }
-    .blocoLinhaVermelho {
-        height: 33.2px;
-        width: 449.6px;
-        background-color: red;
-    }
-
-    .data {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-items: center;
-    }
-
-     .dataLinha {
-        display: flex;
-        flex-direction: row;
-    }
-    .self-end{
-        align-self:flex-end;
-        margin-left: auto; 
-    }
-
-
-    .column {
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 55px;
-        justify-items: baseline;
-        align-items: end;
-    }
-
-     .colunaLinha {
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 55px;
-        justify-items: baseline;
-    }
-
     .divCard {
         width: 1100px;
         height: auto;
@@ -194,4 +107,96 @@
         justify-items: center;
         align-items: center;
         gap: 10px;
+    }
+
+    .center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .chart {
+        display: flex;
+        gap: 10px;
+        align-items: end;
+        margin: 20px;
+        justify-items: baseline;
+    }
+
+    .linhaTabela {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        margin: 20px;
+        justify-items: baseline;
+        font-size: 22px;
+    }
+
+    .tabelas {
+        display: flex;
+        gap: 10px;
+        align-items: end;
+    }
+
+    .tabelasRow {
+        display: flex;
+        gap: 10px;
+    }
+
+    .blocoBlue {
+        height: 282px;
+        width: 28px;
+        background-color: blue;
+    }
+
+    .blocoRed {
+        height: 225px;
+        width: 28px;
+        background-color: red;
+    }
+
+    .blocoLinhaVerde {
+        height: 33.2px;
+        width: 562px;
+        background-color: green;
+    }
+
+    .blocoLinhaVermelho {
+        height: 33.2px;
+        width: 449.6px;
+        background-color: red;
+    }
+
+    .data {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .dataLinha {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .self-end {
+        align-self: flex-end;
+        margin-left: auto;
+    }
+
+
+    .column {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 55px;
+        justify-items: baseline;
+        align-items: end;
+    }
+
+    .colunaLinha {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 55px;
+        justify-items: baseline;
     }

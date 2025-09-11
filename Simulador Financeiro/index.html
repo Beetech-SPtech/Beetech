@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Calculadora BeeTech</title>
+    <title>Simulador - BeeTech</title>
 </head>
 
 <body class="center">
@@ -47,7 +47,7 @@
             var preco = Number(inPreco.value);
 
             var producaoComPerdaMes = colmeias * kgPorColmeiaMes;
-            var perdaProducaoMes = producaoComPerdaMes * 0.18;
+            var perdaProducaoMes = producaoComPerdaMes * 0.06;
 
             var producaoSemPerdaMes = producaoComPerdaMes + perdaProducaoMes;
             var faturamentoComPerdaMes = producaoComPerdaMes * preco;
@@ -62,19 +62,20 @@
                 </div> 
 
                 <br>
-                <span>Nossos serviços podem proporcionar um aumento de até <span style="color:green">${percentualPerda.toFixed(2)}%</span> na sua receita.</span><br><br>
+                <span>Nossos serviços podem proporcionar um aumento de até <span style="color:green">${percentualPerda.toFixed(0)}%</span> na sua receita. Isso poderia representar:</span><br><br>
 
                 <span>Produção antes (mês): <span class="backgroundDado">${producaoComPerdaMes.toFixed(2)} kg</span></span><br>
-                <span>Produção depois (mês): <span class="backgroundDado">${producaoSemPerdaMes.toFixed(2)} kg</span></span><br><br>
+                <span>Produção depois (mês): <span class="backgroundDado">${producaoSemPerdaMes.toFixed(2)} kg</span></span><br>
 
-                <span>Aumento no KG produzidos por mês: <span style="color:green">${perdaProducaoMes.toFixed(2)} kg </span></span><br><br>
+                <span>Aumento no KG produzido: <span style="color:green">${perdaProducaoMes.toFixed(2)} kg </span></span><br><br>
 
+                
                 <span>Faturamento antes (mês): <span class="backgroundDado">R$ ${faturamentoComPerdaMes.toFixed(2)}</span></span><br>
                 <span>Faturamento depois (mês): <span class="backgroundDado">R$ ${faturamentoSemPerdaMes.toFixed(2)}</span></span><br>
-                <span>Aumento no faturamento mensal: <span style="color:green">R$ ${diferencaFaturamentoMes.toFixed(2)}</span></span><br><br>
+                <span>Aumento no faturamento: <span style="color:green">R$ ${diferencaFaturamentoMes.toFixed(2)}</span></span><br><br>
 
                 <div class="line"></div><br>
-                </div>
+                <span class="asterisco";>* fonte: Estudo publicado na Atena Editora</span>
             `;
         }
 
@@ -86,7 +87,7 @@
             var producaoComPerdaMes = colmeias * kgPorColmeiaMes;
             var producaoComPerdaAno = producaoComPerdaMes * 12;
 
-            var perdaProducaoAno = producaoComPerdaAno * 0.18;
+            var perdaProducaoAno = producaoComPerdaAno * 0.06;
             var producaoSemPerdaAno = producaoComPerdaAno + perdaProducaoAno;
 
             var faturamentoComPerdaAno = producaoComPerdaAno * preco;
@@ -100,17 +101,20 @@
                 </div>
 
                 <br>
-                <span>Considerando a mesma produção mensal, os resultados no ano seriam:</span><br><br>
+                <span>Considerando a produção mensal inserida e o possível aumento, os resultados no ano seriam:</span><br><br>
 
                 <span>Produção antes (ano): <span class="backgroundDado">${producaoComPerdaAno.toFixed(2)} kg</span></span><br>
                 <span>Produção depois (ano): <span class="backgroundDado">${producaoSemPerdaAno.toFixed(2)} kg</span></span><br>
-                <span>Aumento nos KG produzidos: <span style="color:green">${perdaProducaoAno.toFixed(2)} kg</span></span><br><br>
+                <span>Aumento no KG produzido: <span style="color:green">${perdaProducaoAno.toFixed(2)} kg</span></span><br><br>
 
                 <span>Faturamento antes (ano): <span class="backgroundDado">R$ ${faturamentoComPerdaAno.toFixed(2)}</span></span><br>
                 <span>Faturamento depois (ano): <span class="backgroundDado">R$ ${faturamentoSemPerdaAno.toFixed(2)}</span></span><br>
-                <span>Aumento no faturamento anual: <span style="color:green">R$ ${diferencaFaturamentoAno.toFixed(2)}</span></span><br><br>
+                <span>Aumento no faturamento: <span style="color:green">R$ ${diferencaFaturamentoAno.toFixed(2)}</span></span><br><br>
+
                 <div class="line"></div><br>
-                </div>
+                <span class="asterisco";>* fonte: Estudo publicado na Atena Editora</span>
+
+                
             `;
         }
     </script>
