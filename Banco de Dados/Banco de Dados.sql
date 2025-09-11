@@ -29,14 +29,14 @@ CONSTRAINT chkCargo CHECK( nivelUsuario IN('ADM', 'SUB'))
 
 -- Inserção de registros na tabela
 INSERT INTO usuarios(nome, sobrenome, email, dtNascimento, telCelular, senha, nivelUsuario) VALUES
-	('Josué', 'Alvarez Avendano', 'josue.avendano@rancho.maia', '2000-02-02', '11960181191', 'J0su3!12th3', 'Rancho do Maia', 'SUB'),
-    ('Rafael', 'Prazeres Calderon', 'rafael.calderon@nagro.valley', '2007-02-23', '11948353845', 'R4f4!12ol', 'Nagro Valley', 'SUB'),
-    ('Lesly', 'Oliveira', 'lesly.oliveira@bee.tec', '2004-06-21', '11961692152', 'K0l3s_3r', 'BeeTec', 'SUB'),
-    ('Cláudio', 'Frizzarini', 'claudio.frizzarini@pedro.colmeia', '1968-05-20', '11932841827', 'fr1zz0l_', 'Fazenda Pedro da Colmeia', 'SUB'),
-    ('Victor', 'Oliveira', 'victor.oliveira@rancho.maia', '2004-11-20', '11984739532', 'V!ctor_23', 'Rancho do Maia', 'ADM'),
-    ('Thais', 'Miranda', 'thais.miranda@nagro.valley', '1999-02-28', '62998570998', 'b1n4r1_t4bl3', 'Nagro Valley', 'ADM'),
-    ('Guilherme', 'Lima', 'guilherme.lima@bee.tech', '1978-12-04', '62903843945', '#gu1_Lim4', 'BeeTec', 'ADM'),
-    ('Pedro', 'Cardoso', 'pedro.cardoso@pedro.colmeia', '1971-04-07', '86978420913', 'pedroFarm_$', 'Fazenda Pedro da Colmeia', 'ADM');
+	('Josué', 'Alvarez Avendano', 'josue.avendano@rancho.maia', '2000-02-02', '11960181191', 'J0su3!12th3', 'SUB'),
+    ('Rafael', 'Prazeres Calderon', 'rafael.calderon@nagro.valley', '2007-02-23', '11948353845', 'R4f4!12ol', 'SUB'),
+    ('Lesly', 'Oliveira', 'lesly.oliveira@bee.tec', '2004-06-21', '11961692152', 'K0l3s_3r', 'SUB'),
+    ('Cláudio', 'Frizzarini', 'claudio.frizzarini@pedro.colmeia', '1968-05-20', '11932841827', 'fr1zz0l_', 'SUB'),
+    ('Victor', 'Oliveira', 'victor.oliveira@rancho.maia', '2004-11-20', '11984739532', 'V!ctor_23', 'ADM'),
+    ('Thais', 'Miranda', 'thais.miranda@nagro.valley', '1999-02-28', '62998570998', 'b1n4r1_t4bl3', 'ADM'),
+    ('Guilherme', 'Lima', 'guilherme.lima@bee.tech', '1978-12-04', '62903843945', '#gu1_Lim4', 'ADM'),
+    ('Pedro', 'Cardoso', 'pedro.cardoso@pedro.colmeia', '1971-04-07', '86978420913', 'pedroFarm_$', 'ADM');
 
 -- Seleção de todos os registros contidos na tabela
 SELECT * FROM usuarios;
