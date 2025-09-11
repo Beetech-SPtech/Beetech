@@ -29,14 +29,14 @@ CONSTRAINT chkCargo CHECK( nivelUsuario IN('ADM', 'SUB'))
 
 -- Inserção de registros na tabela
 INSERT INTO usuarios(nome, sobrenome, email, dtNascimento, telCelular, senha, nivelUsuario) VALUES
-	('Josué', 'Alvarez Avendano', 'josue.avendano@rancho.maia', '2000-02-02', '11960181191', 'J0su3!12th3', 'Rancho do Maia', 'SUB'),
-    ('Rafael', 'Prazeres Calderon', 'rafael.calderon@nagro.valley', '2007-02-23', '11948353845', 'R4f4!12ol', 'Nagro Valley', 'SUB'),
-    ('Lesly', 'Oliveira', 'lesly.oliveira@bee.tec', '2004-06-21', '11961692152', 'K0l3s_3r', 'BeeTec', 'SUB'),
-    ('Cláudio', 'Frizzarini', 'claudio.frizzarini@pedro.colmeia', '1968-05-20', '11932841827', 'fr1zz0l_', 'Fazenda Pedro da Colmeia', 'SUB'),
-    ('Victor', 'Oliveira', 'victor.oliveira@rancho.maia', '2004-11-20', '11984739532', 'V!ctor_23', 'Rancho do Maia', 'ADM'),
-    ('Thais', 'Miranda', 'thais.miranda@nagro.valley', '1999-02-28', '62998570998', 'b1n4r1_t4bl3', 'Nagro Valley', 'ADM'),
-    ('Guilherme', 'Lima', 'guilherme.lima@bee.tech', '1978-12-04', '62903843945', '#gu1_Lim4', 'BeeTec', 'ADM'),
-    ('Pedro', 'Cardoso', 'pedro.cardoso@pedro.colmeia', '1971-04-07', '86978420913', 'pedroFarm_$', 'Fazenda Pedro da Colmeia', 'ADM');
+	('Josué', 'Alvarez Avendano', 'josue.avendano@rancho.maia', '2000-02-02', '11960181191', 'J0su3!12th3', 'SUB'),
+    ('Rafael', 'Prazeres Calderon', 'rafael.calderon@nagro.valley', '2007-02-23', '11948353845', 'R4f4!12ol', 'SUB'),
+    ('Lesly', 'Oliveira', 'lesly.oliveira@bee.tec', '2004-06-21', '11961692152', 'K0l3s_3r', 'SUB'),
+    ('Cláudio', 'Frizzarini', 'claudio.frizzarini@pedro.colmeia', '1968-05-20', '11932841827', 'fr1zz0l_', 'SUB'),
+    ('Victor', 'Oliveira', 'victor.oliveira@rancho.maia', '2004-11-20', '11984739532', 'V!ctor_23', 'ADM'),
+    ('Thais', 'Miranda', 'thais.miranda@nagro.valley', '1999-02-28', '62998570998', 'b1n4r1_t4bl3', 'ADM'),
+    ('Guilherme', 'Lima', 'guilherme.lima@bee.tech', '1978-12-04', '62903843945', '#gu1_Lim4', 'ADM'),
+    ('Pedro', 'Cardoso', 'pedro.cardoso@pedro.colmeia', '1971-04-07', '86978420913', 'pedroFarm_$', 'ADM');
 
 -- Seleção de todos os registros contidos na tabela
 SELECT * FROM usuarios;
@@ -72,17 +72,26 @@ idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
 responsavel VARCHAR(40) NOT NULL,
 nomeEmpresa VARCHAR(150) NOT NULL,
 cnpj CHAR(18),
-telFixo VARCHAR(10) UNIQUE,
+telFixo VARCHAR(12) UNIQUE,
 telCelular VARCHAR(13) UNIQUE
 );
 
 -- Inserção de registros na tabela
-INSERT INTO empresa (responsavel, nomeEmpresa, cnpj, telFixo) VALUES
+INSERT INTO empresa (responsavel, nomeEmpresa, cnpj, telCelular) VALUES
 ('Victor Rafael', 'Rancho do Maia', '20.000.258/0001-03', '1123750853'),
 ('Thais Lima', 'Nagro Valley', '16.465.514/0001-52' ,'6274859048'),
 ('Guilherme Jesus', 'BeeTec', '47.287.021/0001-01' ,'6274890985'),
 ('Pedro Henrique', 'Fazenda Pedro da Colmeia', '76.168.937/0001-32' ,'8674830941');
 
+SELECT nomeEmpresa, telCelular, CASE 
+		WHEN telCelular LIKE '11%' THEN 'DDD 11 - São Paulo'
+        WHEN telCelular LIKE '21%' THEN 'DDD 21 - Rio de Janeiro'
+        WHEN telCelular LIKE '31%' THEN 'DDD 31 - Minas Gerais'
+        WHEN telCelular LIKE '41%' THEN 'DDD 28 - Espírio Santo'
+ELSE 'Outro DDD' END AS 'Região' FROM empresa;
+
+SELECT nomeEmpresa, telCelular, CASE WHEN telCelular IS NULL THEN 'Sem celular'
+ELSE 'Celular cadastrado' END AS 'Situação' FROM empresa;
 /* ------------------------------------------------------------------------------------------------------- */
 
 -- Criação da tabela 'contato' armazenando mensagens e dados de contato de interessados
@@ -123,7 +132,6 @@ SELECT * FROM contato;
 
 -- Exibição específica para o contato com idContato igual a 4, exibindo nome completo, e-mail e comentário, com apelidos semânticos no campos
 SELECT CONCAT(nome, sobrenome) AS Nome, email AS 'Email do Usuário', comentario AS 'Comentário' FROM contato WHERE idContato = 4; 
-
 /* ------------------------------------------------------------------------------------------------------- */
 
 -- Criação da tabela 'registroSensor', armazenando registros de temperatura capturados por sensores
@@ -152,7 +160,6 @@ INSERT INTO registroSensor (sensor, qtdTemperatura) VALUES
 SELECT * FROM registroSensor WHERE sensor = 'Sensor_001';
 
 SELECT CASE WHEN qtdTemperatura > 36 THEN CONCAT('Temperatura Elevada: ', qtdTemperatura) END FROM registroSensor;
-
 /* ------------------------------------------------------------------------------------------------------- */
 
 -- Criação da tabela 'sensores', armazenando informações sobre sensores utilizados pelos clientes
@@ -172,6 +179,8 @@ INSERT INTO sensores (nomeSensor, cliente) VALUES
 -- Seleção de todos os dados dentro da tabela
 SELECT * FROM sensores;
 
+SELECT idSensor, nomeSensor, cliente, CASE WHEN cliente LIKE '%Fazenda%' THEN 'Alta prioridade'
+ELSE 'Normal' END AS prioridade FROM sensores ORDER BY prioridade;
 /* ------------------------------------------------------------------------------------------------------- */
 
 
@@ -205,7 +214,6 @@ FROM producaoTotal;
 
 -- Exibição da quantidade de colmeias, mel produzido em KG e valor do mel, com apelidos semânticos
 SELECT qtdColmeia AS 'Quantidade de Colmeias', melKg AS 'Mel Por Quilo', valorMel AS 'Preço do Mel' FROM  producaoTotal;
-
 /* ------------------------------------------------------------------------------------------------------- */
 
 CREATE TABLE enderecos(
@@ -221,3 +229,15 @@ CREATE TABLE enderecos(
     statusEndereco VARCHAR(10) DEFAULT 'Ativo',
     CONSTRAINT chkEndereco CHECK( statusEndereco IN('Ativo', 'Inativo'))
 );
+
+INSERT INTO enderecos (cnpj, logradouro, numLogradouro, cidade, UF, cep, bairro, complemento, statusEndereco) VALUES
+('12.345.678/0001-90', 'Avenida Paulista', '1000', 'São Paulo', 'SP', '01310-100', 'Bela Vista', 'Conjunto 101', 'Ativo'),
+('98.765.432/0001-55', 'Rua XV de Novembro', '250', 'Curitiba', 'PR', '80020-310', 'Centro', 'Sala 5', 'Ativo'),
+('55.444.333/0001-22', 'Avenida Atlântica', '5000', 'Rio de Janeiro', 'RJ', '22021-001', 'Copacabana', 'Apt 130', 'Inativo'),
+('77.888.999/0001-11', 'Rua das Flores', '123', 'Florianópolis', 'SC', '88010-200', 'Centro', 'Casa 2', 'Ativo');
+
+SELECT idEnderecos, cidade, CASE WHEN statusEndereco = 'Ativo' THEN 'Endereço em uso'
+ELSE 'Endereço desativado' END AS situacao FROM enderecos;
+
+SELECT cep, CASE WHEN cep LIKE '_____-___' THEN 'Formato válido'
+ELSE 'Formato inválido' END AS 'Validação do CEP' FROM enderecos;
