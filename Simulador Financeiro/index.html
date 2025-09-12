@@ -47,7 +47,7 @@
             var preco = Number(inPreco.value);
 
             var producaoComPerdaMes = colmeias * kgPorColmeiaMes;
-            var perdaProducaoMes = producaoComPerdaMes * 0.06;
+            var perdaProducaoMes = producaoComPerdaMes * 0.05;
 
             var producaoSemPerdaMes = producaoComPerdaMes + perdaProducaoMes;
             var faturamentoComPerdaMes = producaoComPerdaMes * preco;
@@ -87,7 +87,7 @@
             var producaoComPerdaMes = colmeias * kgPorColmeiaMes;
             var producaoComPerdaAno = producaoComPerdaMes * 12;
 
-            var perdaProducaoAno = producaoComPerdaAno * 0.06;
+            var perdaProducaoAno = producaoComPerdaAno * 0.05;
             var producaoSemPerdaAno = producaoComPerdaAno + perdaProducaoAno;
 
             var faturamentoComPerdaAno = producaoComPerdaAno * preco;

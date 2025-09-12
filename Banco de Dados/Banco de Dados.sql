@@ -61,9 +61,6 @@ UPDATE usuarios SET nome = 'Matheus' WHERE idUsuario = 1;
 
 -- Seleção apenas da coluna 'nome', com alias 'Nomes'
 SELECT nome as Nomes FROM usuarios;
-
--- Exclusão da tabela
-DROP TABLE usuarios;
 /* ------------------------------------------------------------------------------------------------------- */
 
 -- Criação da tabela 'empresa' armazenando informações de empresas parceiras
